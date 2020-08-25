@@ -6,35 +6,55 @@
           <div class="card-body">
             <h3>Add New Book</h3>
             <hr />
+            <ValidationObserver>
             <div class="form-group">
               <label>Book Name</label>
+               <ValidationProvider
+              mode="passive"
+              rules="required"
+              >
               <input
                 v-model="book.bookName"
                 type="text"
                 class="form-control"
                 placeholder="Please enter book name"
               />
+              </ValidationProvider>
             </div>
             <div class="form-group">
               <label>Author</label>
+              <ValidationProvider
+              mode="passive"
+              rules="required"
+              >
               <input
                 v-model="book.author"
                 type="text"
                 class="form-control"
                 placeholder="Please enter author"
               />
+              </ValidationProvider>
             </div>
             <div class="form-group">
               <label>Book Image URL</label>
+              <ValidationProvider
+              mode="passive"
+              rules="required"
+              >
               <input
                 v-model="book.imageURL"
                 type="text"
                 class="form-control"
                 placeholder="Book Image URL"
               />
+              </ValidationProvider>
             </div>
             <div class="form-group">
               <label>Comment</label>
+              <ValidationProvider
+              mode="passive"
+              rules="required"
+              >
               <textarea
                 v-model="book.comment"
                 cols="30"
@@ -42,9 +62,11 @@
                 placeholder="If you want, you can enter a description for the book..."
                 class="form-control"
               ></textarea>
+              </ValidationProvider>
             </div>
             <hr />
             <button class="btn btn-success" :disabled="saveEnable" @click="saveBook">Save Book</button>
+            </ValidationObserver>
           </div>
         </div>
       </div>
@@ -53,8 +75,13 @@
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver } from "vee-validate";
 export default {
   name: "Books",
+  components: {
+    ValidationProvider,
+    ValidationObserver,
+  },
   data() {
     return {
       book: {

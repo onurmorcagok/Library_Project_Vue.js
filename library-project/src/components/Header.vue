@@ -1,7 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <router-link to="/" tag="a" class="navbar-brand">
-      <a class="navbar-brand">Book Project</a>
+    <i class="fas fa-book-open mr-2"></i>
+      <a class="navbar-brand">Library Project</a>
     </router-link>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
