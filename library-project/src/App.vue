@@ -2,7 +2,7 @@
   <div>
     <appHeader></appHeader>
     <router-view></router-view>
-    <appFooter></appFooter>
+    <!-- <appFooter></appFooter> -->
   </div>
 </template>
 
@@ -18,5 +18,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
+
 </style>

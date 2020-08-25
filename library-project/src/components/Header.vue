@@ -1,17 +1,21 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand" href="#">Book Project</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <router-link to="/" tag="a" class="navbar-brand">
+      <a class="navbar-brand">Book Project</a>
+    </router-link>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Book Store Operations</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">User Operations</a>
-            </li>
-        </ul>
+      <ul class="navbar-nav mr-auto">
+        <router-link to="/bookstore" tag="li" class="nav-item" active-class="active">
+          <a class="nav-link text-white">Book Store Operations</a>
+        </router-link>
+
+        <router-link to="/user" tag="li" class="nav-item" active-class="active">
+          <a class="nav-link text-white">User Operations</a>
+        </router-link>
+      </ul>
     </div>
-</nav>
+  </nav>
 </template>
 
 <script>

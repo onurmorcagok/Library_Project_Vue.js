@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Books from "../components/Books";
+import BookStore from "../components/BookStore";
 import BookList from "../components/BookList";
+import UserOperation from '../components/UserOperation';
 
 Vue.use(VueRouter);
 
@@ -12,9 +13,14 @@ const routes = [
     component: BookList
   },
   {
-    path: "/books",
-    name: "Books",
-    component: Books
+    path: "/bookstore",
+    name: "BookStore",
+    component: BookStore
+  },
+  {
+    path: "/user",
+    name: "UserOperation",
+    component: UserOperation
   },
   {
     path: "*",
