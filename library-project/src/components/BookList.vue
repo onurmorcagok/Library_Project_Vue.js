@@ -8,6 +8,7 @@
             <hr />
             <table
               class="table table-hover table-striped table-bordered"
+              v-if="getBooks.length > 0"
               style="text-align:center;"
             >
               <thead>
@@ -16,20 +17,26 @@
                 <th>Author</th>
                 <th>Image</th>
                 <th>Comment</th>
+                <th>Action</th>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="book in getBooks" v-bind:key="book.id">
                   <td class="align-middle text-center">
-                    <span class="badge badge-info">E564fghdE563df</span>
+                    <span class="badge badge-info"> {{ book.id }}</span>
                   </td>
-                  <td class="align-middle text-center">Deneme</td>
-                  <td class="align-middle text-center">1</td>
-                  <td style="width: 120px;">10,000</td>
-                  <td class="align-middle">Örnek Açıklama</td>
+                  <td class="align-middle text-center">{{ book.bookName}}</td>
+                  <td class="align-middle text-center">{{ book.author }}</td>
+                  <td style="width: 120px;">{{ book.imageURL }}</td>
+                  <td class="align-middle">{{ book.comment }}</td>
+                  <td class="align-middle text-center">
+                      <i class="fas fa-trash-alt text-danger">
+                          <a href="#"></a>
+                      </i>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <div class="alert alert-warning">
+            <div class="alert alert-warning" v-else>
               <strong>No Records Found</strong>
               <br />
               <small>You can use the Book Transactions menu at the bottom of the page to add a record.</small>
@@ -42,8 +49,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "BookList",
+  computed: {
+    ...mapGetters(["getBooks"]),
+  },
 };
 </script>
 

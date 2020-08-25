@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { router } from "../router";
 
 Vue.use(Vuex);
 
@@ -14,18 +15,31 @@ export default new Vuex.Store({
   },
   actions: {
     initApp({ commit }) {
-      // Vue Resource
+      Vue.http
+        .get("https://library-project-d1260.firebaseio.com/books.json")
+        .then((response) => {
+          const data = response.body;
+          for (let id in data) {
+            data[id].id = id;
+            commit("updateBookList", data[id]);
+          }
+        });
     },
     saveBook({ commit, state }, payload) {
-      Vue.http.post('https://library-project-d1260.firebaseio.com/books.json',payload)
-      .then ((response) => {
+      Vue.http
+        .post(
+          "https://library-project-d1260.firebaseio.com/books.json",
+          payload
+        )
+        .then((response) => {
+          payload.id = response.body.name;
 
-        payload.id = response.body.name;
-        commit("updateBookList", payload);
-        
-        console.log(state.books);
+          commit("updateBookList", payload);
 
-      })
+          console.log(state.books);
+
+          router.replace("/");
+        });
     },
     deleteBook({ commit }, payload) {
       // Vue Resource

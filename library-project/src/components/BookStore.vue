@@ -25,7 +25,7 @@
               />
             </div>
             <div class="form-group">
-              <label>Book Image</label>
+              <label>Book Image URL</label>
               <input
                 v-model="book.imageURL"
                 type="text"
@@ -44,7 +44,7 @@
               ></textarea>
             </div>
             <hr />
-            <button class="btn btn-success" @click="saveBook">Save Book</button>
+            <button class="btn btn-success" :disabled="saveEnable" @click="saveBook">Save Book</button>
           </div>
         </div>
       </div>
@@ -62,14 +62,46 @@ export default {
         author: "",
         imageURL: "",
         comment: "",
+        saveButtonClick: false,
       },
     };
   },
   methods: {
-      saveBook(){
-          this.$store.dispatch("saveBook", this.book);
+    saveBook() {
+      this.saveButtonClick = true;
+      this.$store.dispatch("saveBook", this.book);
+    },
+  },
+  computed: {
+    // Validation
+    saveEnable() {
+      if (
+        this.book.bookName.length > 0 &&
+        this.book.author.length > 0 &&
+        this.book.imageURL.length > 0 &&
+        this.book.comment.length > 0
+      ) {
+        return false;
+      } else {
+        return true;
       }
-  }
+    },
+  },
+  beforeRouteLeave(to, from, next) {
+    if (
+      (this.book.bookName.length > 0 ||
+      this.book.author.length > 0 ||
+      this.book.imageURL.length > 0 ||
+      this.book.comment.length > 0)  && !this.saveButtonClick ){
+      if (confirm("There are unsaved changes. Still want to quit?")) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
+  },
 };
 </script>
 

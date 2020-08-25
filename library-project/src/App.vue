@@ -15,6 +15,9 @@ export default {
     appHeader: Header,
     appFooter: Footer
   },
+  created(){
+    this.$store.dispatch("initApp");
+  }
 };
 </script>
 
