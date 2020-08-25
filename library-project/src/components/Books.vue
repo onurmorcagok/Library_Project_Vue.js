@@ -23,7 +23,7 @@
                               class="form-control"></textarea>
                 </div>
                 <hr>
-                <button class="btn btn-success">Save Book</button>
+                <button class="btn btn-primary">Save Book</button>
             </div>
         </div>
     </div>
