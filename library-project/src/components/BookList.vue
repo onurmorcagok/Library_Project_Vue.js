@@ -17,6 +17,7 @@
                 <th>Author</th>
                 <th>Image</th>
                 <th>Comment</th>
+                <th>Status</th>
                 <th>Action</th>
               </thead>
               <tbody>
@@ -28,6 +29,7 @@
                   <td class="align-middle text-center">{{ book.author }}</td>
                   <td style="width: 120px;">{{ book.imageURL }}</td>
                   <td class="align-middle">{{ book.comment }}</td>
+                  <td class="aling-middle">{{ book.status }}</td>
                   <td class="align-middle text-center">
                     <button @click="deleteBook">
                       <i class="fas fa-trash-alt text-danger"></i>
@@ -39,7 +41,7 @@
             <div class="alert alert-warning" v-else>
               <strong>No Records Found</strong>
               <br />
-              <small>You can use the Book Transactions menu at the bottom of the page to add a record.</small>
+              <small>You can use the Book Store Operation menu to add records.</small>
             </div>
           </div>
         </div>
