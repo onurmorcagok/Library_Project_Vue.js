@@ -45,7 +45,8 @@
                 <ValidationProvider mode="passive" rules="required">
                   <br />
                   <input v-model="book.status" type="radio" id="user" name="User" value="User" />
-                  <label class="radio" for="User">User</label><br>
+                  <label class="radio" for="User">User</label>
+                  <br />
                   <input v-model="book.status" type="radio" id="store" name="Store" value="Store" />
                   <label class="radio" for="Store">Store</label>
                   <br />
@@ -88,15 +89,16 @@ export default {
         author: "",
         imageURL: "",
         comment: "",
-        status:"",
+        status: "",
         saveButtonClick: false,
       },
     };
   },
   methods: {
-    saveBook() {
+    saveBook(book) {
       this.saveButtonClick = true;
       this.$store.dispatch("saveBook", this.book);
+      alert(`${this.book.bookName} hass been added from library.`);
     },
   },
   computed: {

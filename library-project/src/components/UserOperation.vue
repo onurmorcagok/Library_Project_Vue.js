@@ -66,6 +66,7 @@ export default {
     deleteBook(){
       this.deleteButtonClick = true;
       this.$store.dispatch("deleteBook", this.book);
+      confirm("Are you sure you want to delete the selected book?");
     }
   },
   computed: {

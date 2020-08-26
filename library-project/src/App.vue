@@ -17,6 +17,7 @@ export default {
   },
   created(){
     this.$store.dispatch("initApp");
+    window.vueInstance = this;
   }
 };
 </script>
