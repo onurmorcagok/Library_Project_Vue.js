@@ -98,7 +98,7 @@ export default {
     saveBook(book) {
       this.saveButtonClick = true;
       this.$store.dispatch("saveBook", this.book);
-      alert(`${this.book.bookName} hass been added from library.`);
+      alert(`${this.book.bookName} has been added to the library.`);
     },
   },
   computed: {
