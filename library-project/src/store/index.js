@@ -12,6 +12,9 @@ export default new Vuex.Store({
     updateBookList(state, book) {
       state.books.push(book);
     },
+    deleteBookList(state,book){
+      state.books.remove(book);
+    }
   },
   actions: {
     initApp({ commit }) {
@@ -42,7 +45,19 @@ export default new Vuex.Store({
         });
     },
     deleteBook({ commit }, payload) {
-      // Vue Resource
+      Vue.http
+        .delete(
+          "https://library-project-d1260.firebaseio.com/books.json",
+          payload
+        )
+        .then((response) => {
+
+          payload.id = response.body.name;
+
+          commit("deleteBookList", payload);
+
+          router.replace("/");
+        });
     },
   },
   getters: {

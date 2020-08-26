@@ -29,9 +29,9 @@
                   <td style="width: 120px;">{{ book.imageURL }}</td>
                   <td class="align-middle">{{ book.comment }}</td>
                   <td class="align-middle text-center">
-                      <i class="fas fa-trash-alt text-danger">
-                          <a href="#"></a>
-                      </i>
+                    <button @click="deleteBook">
+                      <i class="fas fa-trash-alt text-danger"></i>
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -52,6 +52,17 @@
 import { mapGetters } from "vuex";
 export default {
   name: "BookList",
+  data() {
+    return {
+      deleteButtonClick: false,
+    }
+  },
+  methods: {
+    deleteBook(){
+      this.deleteButtonClick = true;
+      this.$store.dispatch("deleteBook", this.book);
+    }
+  },
   computed: {
     ...mapGetters(["getBooks"]),
   },
